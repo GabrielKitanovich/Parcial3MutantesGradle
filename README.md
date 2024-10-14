@@ -46,6 +46,7 @@ The application will start on http://localhost:8080.
 - HTTP Status: 200 OK (if the DNA is mutant)
 - HTTP Status: 403 Forbidden (if the DNA is not mutant)
 - HTTP Status: 400 Bad Request (if the DNA is invalid)
+- HTTP Status: 409 Conflict (if the DNA already exists in the Database)
 
 ### Get DNA Stats
 
