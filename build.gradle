@@ -48,6 +48,10 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 	finalizedBy('jacocoTestReport')
+	testLogging {
+		events "passed", "skipped", "failed"
+		showStandardStreams = true
+	}
 }
 bootJar {
 	mainClass = 'com.example.Mutantes.MutantesApplication'
@@ -59,4 +63,9 @@ tasks.jacocoTestReport {
 		csv.required.set(false)
 		html.outputLocation.set(layout.buildDirectory.dir('jacocoHtml'))
 	}
+}
+
+// Asegurarse de que los tests se ejecuten antes de bootRun
+tasks.named('bootRun') {
+	dependsOn test
 }
