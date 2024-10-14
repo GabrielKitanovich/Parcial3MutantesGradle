@@ -1,10 +1,10 @@
-FROM gradle:8.10.0-jdk17 AS build
+FROM gradle:8.10.0-jdk17-alpine AS build
 
 # Configurar el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
 # Copiar archivos de Gradle y el código fuente
-COPY build.gradle.kts settings.gradle.kts gradlew ./
+COPY build.gradle settings.gradle gradlew ./
 COPY gradle ./gradle
 COPY src ./src
 
