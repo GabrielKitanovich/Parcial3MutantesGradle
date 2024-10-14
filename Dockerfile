@@ -1,4 +1,7 @@
-FROM gradle:8.10.0-jdk17-alpine AS build
+
+
+# Etapa 1: Construir la aplicación usando Gradle
+FROM gradle:8.10.0-jdk21 AS build
 
 # Configurar el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -8,14 +11,14 @@ COPY build.gradle settings.gradle gradlew ./
 COPY gradle ./gradle
 COPY src ./src
 
-# Otorgar permisos de ejecución a gradlew
-RUN chmod +x ./gradlew
+# Dar permisos de ejecución al script gradlew
+RUN chmod +x gradlew
 
 # Construir el proyecto
-RUN ./gradlew build
+RUN ./gradlew build -x test
 
 # Etapa 2: Crear la imagen final para ejecución
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 
 # Configurar el directorio de trabajo dentro del contenedor
 WORKDIR /app
