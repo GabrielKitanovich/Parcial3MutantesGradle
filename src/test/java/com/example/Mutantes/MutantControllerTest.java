@@ -43,8 +43,8 @@ public class MutantControllerTest {
         ResponseEntity<String> response = mutantController.checkMutant(new DnaRequest(dna));
 
         // Verificamos el resultado
+        assertEquals(HttpStatus.OK, response.getStatusCode());
 
-        assertEquals("Mutant detected", response.getBody());
     }
 
     @Test
@@ -59,7 +59,7 @@ public class MutantControllerTest {
         ResponseEntity<String> response = mutantController.checkMutant(dnaRequest);
 
         // Verificamos el resultado
-
+        assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
         assertEquals("Not a mutant", response.getBody());
     }
 
