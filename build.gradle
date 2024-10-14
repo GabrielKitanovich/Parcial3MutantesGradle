@@ -46,3 +46,6 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+bootJar {
+	mainClassName = 'com.example.Mutantes.MutantesApplication'
+}
